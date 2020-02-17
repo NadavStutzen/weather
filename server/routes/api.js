@@ -46,9 +46,10 @@ router.post(`/weather/city`, async(req, res)=> {
     const newCity = new City(req.body)
      if(await City.find({name : newCity.name})){
         res.send('City already saved to DB')
+    }else{
+        await newCity.save()
+        res.send('Saved succesfully')
     }
-    await newCity.save()
-    res.send('Saved succesfully')
 });
 
 router.delete(`/weather/city/:cityName`, async(req, res) => {
