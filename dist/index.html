@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <script id="city-template" type="text/x-handlebars-template">
+      {{#each cities}}
+      <div class="city" data-name="{{name}}">
+          <img src="{{conditionPic}}" alt="">
+          <span>{{name}}</span>
+          <span>{{condition}}</span>
+          <span>{{tempature}}</span>
+          {{#if saved}}
+          <span class="delete-btn">
+              <i class="fas fa-minus-circle"></i>
+          </span>
+          {{else}}
+          <span class="save-btn">
+              <i class="fas fa-plus-circle"></i>
+          </span>
+          {{/if}}
+      </div>
+      {{/each}}
+    </script>
+
+    <div id="search">
+      <input type="text" placeholder="Enter City Name" />
+      <span id="search-icon">
+          <i
+            class="fas fa-search" 
+          ></i>
+      </span>
+      
+    </div>
+    <div id="container"></div>
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+    <script src="/handlebars/dist/handlebars.js"></script>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="model.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
