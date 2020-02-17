@@ -6,7 +6,7 @@ const City = require(`../models/City`)
 
 const apiKey = `e1c1e3622a802b737a0b62a19ddced05`;
 
-router.get("/weather/:cityName", function(req, res) {
+router.get("/city/:cityName", function(req, res) {
   const { cityName } = req.params;
   console.log(cityName);
   
@@ -25,7 +25,7 @@ router.get("/weather/:cityName", function(req, res) {
           name: cityName,
           tempature: data.main.temp,
           condition: data.weather[0].description,
-          descriptionPic: ""
+          descriptionPic: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
         };
         console.log(releventData);
 
@@ -35,16 +35,16 @@ router.get("/weather/:cityName", function(req, res) {
   );
 });
 
-router.get(`/weather/cities`, async (req, res) =>{
+router.get(`/cities`, async (req, res) =>{
     let cities = await City.find({})
     console.log(cities);
     res.send(cities)
     
 });
 
-router.post(`/weather/city`, async(req, res)=> {
+router.post(`/city`, async(req, res)=> {
     const newCity = new City(req.body)
-     if(await City.find({name : newCity.name})){
+     if( (await City.find({name : newCity.name})).length > 0){
         res.send('City already saved to DB')
     }else{
         await newCity.save()
