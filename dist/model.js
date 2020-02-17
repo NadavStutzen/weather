@@ -12,31 +12,34 @@ class Model {
   }
 
   async getCityData(cityName) {
-    this.cityData.unshift(await $.get(`./city/${cityName}`));
-    this.cityData[0].saved = false;
+    const newCity = await $.get(`./city/${cityName}`)  
+    if(!(this.cityData.some(c => c.name == newCity.name))){
+        this.cityData.unshift(newCity);
+        this.cityData[0].saved = false;
+    }
+    
   }
 
-  async saveCity(city) {
+  async saveCity(city,index) {
+    this.cityData[index].saved = true
     let savePromise = await $.post(`./city`, city);
-    alert(savePromise);
+    console.log(savePromise);
   }
 
-  async removeCity(cityName) {
+  async removeCity(cityName , index) {
     $.ajax({
       url: `./city/${cityName}`,
       method: "DELETE",
       async: false,
       contentType: "text",
       success: function(data) {
-        alert(`Succesfully removed `);
+        console.log(`Succesfully removed `);
       },
       error: function(err) {
         console.log(err);
       }
     });
+    this.cityData.splice(index,1)
   }
-  //Testing purposes method
-  printCities() {
-    console.log(this.cityData);
-  }
+  
 }

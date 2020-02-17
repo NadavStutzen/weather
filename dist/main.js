@@ -17,15 +17,15 @@ $('#search-icon').on('click',function(){
 
 $('#container').on('click','.delete-btn',async function (){
     const cityName = $(this).closest('.city').data().name
-    await model.removeCity(cityName)
+    const indexToChange = model.cityData.findIndex(c => c.name == cityName)
+    await model.removeCity(cityName , indexToChange)
     renderer.renderData(model.cityData)
 })
 
 $('#container').on('click','.save-btn',async function(){
     const cityName = $(this).closest('.city').data().name
-    console.log(cityName);
     const indexToSave = model.cityData.findIndex(c => c.name == cityName)
-    await model.saveCity(model.cityData[indexToSave])
+    await model.saveCity(model.cityData[indexToSave],indexToSave)
     renderer.renderData(model.cityData)
 })
 loadPage()

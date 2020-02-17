@@ -1,10 +1,8 @@
 const express = require("express");
 const path = require("path");
-//const request = require('request')
 const bodyParser = require('body-parser')
 const api = require('./server/routes/api')
 const mongoose = require('mongoose')
-//const Schema = mongoose.Schema
 mongoose.connect('mongodb://localhost/weatherDB', { useNewUrlParser: true })
 
 const app = express();

@@ -4,8 +4,6 @@ class Renderer{
      this.template = Handlebars.compile(this.source)
     }
     renderData(cities){
-        console.log(cities);
-        
         const newcities = this.template({cities})
         $(`#container`).empty().append(newcities)
     }
