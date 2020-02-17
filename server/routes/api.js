@@ -25,7 +25,7 @@ router.get("/city/:cityName", function(req, res) {
           name: cityName,
           tempature: data.main.temp,
           condition: data.weather[0].description,
-          descriptionPic: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+          conditionPic: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
         };
         console.log(releventData);
 
@@ -37,7 +37,6 @@ router.get("/city/:cityName", function(req, res) {
 
 router.get(`/cities`, async (req, res) =>{
     let cities = await City.find({})
-    console.log(cities);
     res.send(cities)
     
 });
@@ -52,7 +51,7 @@ router.post(`/city`, async(req, res)=> {
     }
 });
 
-router.delete(`/weather/city/:cityName`, async(req, res) => {
+router.delete(`/city/:cityName`, async(req, res) => {
     const {cityName} = req.params
     await City.findOneAndDelete({name : cityName})
     res.send(`Deleted ${cityName} from the DB`)
