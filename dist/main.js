@@ -11,8 +11,9 @@ const handleSearch = async function (cityName){
     renderer.renderData(model.cityData)
 }
 
-$('#search-icon').on('click',function(){
+$('#search').on('click','svg',function(){
     handleSearch($('input').val())
+    $('input').val("")
 })
 
 $('#container').on('click','.delete-btn',async function (){

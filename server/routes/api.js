@@ -9,18 +9,18 @@ router.get("/city/:cityName", function(req, res) {
   const { cityName } = req.params;
   request(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`,
-    function(err, result) {
-      if (err) {
-        res.send("Your requested city is invalid");
-      } else {
-        const data = JSON.parse(result.body);
+    function(error,response,body) {
+      if (response.statusCode == 200) {
+        const data = JSON.parse(response.body);
         const releventData = {
           name: data.name,
-          tempature: data.main.temp,
+          tempature: Math.round(data.main.temp),
           condition: data.weather[0].description,
           conditionPic: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
         };
         res.send(releventData);
+      }else{
+        res.send('error')
       }
     }
   );

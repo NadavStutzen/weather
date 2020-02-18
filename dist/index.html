@@ -3,37 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
   </head>
   <body>
     <script id="city-template" type="text/x-handlebars-template">
       {{#each cities}}
       <div class="city" data-name="{{name}}">
-          <img src="{{conditionPic}}" alt="">
-          <span>{{name}}</span>
-          <span>{{condition}}</span>
-          <span>{{tempature}}</span>
+        <h3 class="name">{{name}}</h3>
+        <div id="icon-desc-cont">
+          <img class="wether-icon" src="{{conditionPic}}" alt="">
+          <span class="description">{{condition}}</span>
+        </div>
+        <div id="temp-save-cont">
+          <h2 class="temp">{{tempature}}°</h2>
           {{#if saved}}
           <span class="delete-btn">
-              <i class="fas fa-minus-circle"></i>
+            <i class="fas fa-minus-circle"></i>
           </span>
           {{else}}
           <span class="save-btn">
               <i class="fas fa-plus-circle"></i>
           </span>
           {{/if}}
+        </div>
       </div>
       {{/each}}
     </script>
 
     <div id="search">
       <input type="text" placeholder="Enter City Name" />
-      <span id="search-icon">
-          <i
-            class="fas fa-search" 
-          ></i>
-      </span>
-      
+      <i class="fas fa-search search-icon"></i>
     </div>
     <div id="container"></div>
     <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>

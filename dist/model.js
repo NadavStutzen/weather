@@ -12,10 +12,16 @@ class Model {
   }
 
   async getCityData(cityName) {
-    const newCity = await $.get(`./city/${cityName}`)  
+    const newCity = await $.get(`./city/${cityName}`) 
+    if(newCity == 'error'){
+      alert('Your serach returned no results,Try again')
+      return
+    } 
     if(!(this.cityData.some(c => c.name == newCity.name))){
         this.cityData.unshift(newCity);
         this.cityData[0].saved = false;
+    }else{
+      alert(`${cityName} already displayed`)
     }
     
   }

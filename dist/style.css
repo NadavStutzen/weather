@@ -1,0 +1,72 @@
+body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background-image: url("https://images.pexels.com/photos/2097628/pexels-photo-2097628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.city {
+  display: grid;
+  color: white;
+  margin: 5px;
+  background-color: rgba(50, 50, 0, 0.2);
+  border-radius: 25px;
+  border: black;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: center;
+}
+.name {
+  display: flex;
+  padding: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.delete-btn {
+  color: red;
+  padding-top: 5px;
+}
+#temp-save-cont {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+#icon-desc-cont {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+.save-btn {
+  color: green;
+  padding-top: 5px;
+}
+.description {
+  display: grid;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#search {
+  position: fixed;
+  display: flex;
+  width: 95vw;
+  margin: 5px;
+  padding-left: 5px;
+  justify-content: start;
+  color: #2c3a47;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+input {
+  border-radius: 25px;
+  padding-left: 5px;
+  width: 70vw;
+  height: 30px;
+  align-self: start;
+}
+.search-icon {
+  align-self: center;
+  cursor: pointer;
+  margin-left: 5px;
+}
