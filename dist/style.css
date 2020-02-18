@@ -30,6 +30,10 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.refresh{
+  padding-left: 5px;
+  color: #9bf056;
+}
 
 .delete-btn {
   color: red;
