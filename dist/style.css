@@ -1,6 +1,7 @@
 body {
   display: grid;
   grid-template-rows: 1fr auto;
+  background-size: cover;
   background-image: url("https://images.pexels.com/photos/2097628/pexels-photo-2097628.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
@@ -8,7 +9,23 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+  
 }
+@media (min-width:630px){
+  #container{
+    width: 60vw;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    
+  }
+  #search{
+    justify-content: center;
+    width: 60vw;
+  }
+}
+
 
 .city {
   display: grid;
@@ -50,10 +67,10 @@ body {
 #search {
   position: fixed;
   display: flex;
-  width: 95vw;
+  width: 80vw;
   margin: 5px;
   padding-left: 5px;
-  justify-content: start;
+  justify-self: center;
   color: #2c3a47;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -61,12 +78,13 @@ body {
 input {
   border-radius: 25px;
   padding-left: 5px;
-  width: 70vw;
   height: 30px;
-  align-self: start;
+  width: 40vw;
+  justify-self: center;
 }
 .search-icon {
   align-self: center;
+  justify-self: flex-end;
   cursor: pointer;
   margin-left: 5px;
 }
