@@ -47,4 +47,10 @@ router.delete(`/city/:cityName`, async (req, res) => {
   res.send(`Deleted ${cityName} from the DB`);
 });
 
+router.put(`/city`,async (req,res) =>{
+  const city = req.body;
+  await City.findOneAndUpdate({name : city.name},city)
+  res.send('updated')
+})
+
 module.exports = router;

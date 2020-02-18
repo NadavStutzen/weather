@@ -12,32 +12,28 @@ class Model {
   }
 
   async getCityData(cityName) {
-    const newCity = await $.get(`./city/${cityName}`) 
-    if(newCity == 'error'){
-      alert('Your serach returned no results,Try again')
-      return
-    } 
-    if(!(this.cityData.some(c => c.name == newCity.name))){
-        this.cityData.unshift(newCity);
-        this.cityData[0].saved = false;
-    }else{
-      alert(`${cityName} already displayed`)
+    const newCity = await $.get(`./city/${cityName}`);
+    if (newCity == "error") {
+      alert("Your serach returned no results,Try again");
+      return;
+    } else if (!this.cityData.some(c => c.name == newCity.name)) {
+      this.cityData.unshift(newCity);
+      this.cityData[0].saved = false;
+    } else {
+      alert(`${cityName} already displayed`);
     }
-    
   }
 
-  async saveCity(city,index) {
-    this.cityData[index].saved = true
+  async saveCity(city, index) {
+    this.cityData[index].saved = true;
     let savePromise = await $.post(`./city`, city);
     console.log(savePromise);
   }
 
-  async removeCity(cityName , index) {
+  async removeCity(cityName, index) {
     $.ajax({
       url: `./city/${cityName}`,
       method: "DELETE",
-      async: false,
-      contentType: "text",
       success: function(data) {
         console.log(`Succesfully removed `);
       },
@@ -45,7 +41,23 @@ class Model {
         console.log(err);
       }
     });
-    this.cityData.splice(index,1)
+    this.cityData.splice(index, 1);
   }
-  
+  async updateCity(cityName, index) {
+    const newCity = await $.get(`./city/${cityName}`);
+    if (this.cityData[index].saved) {
+      newCity.saved = true;
+    } else {
+      newCity.saved = false;
+    }
+    await $.ajax({
+      url: `./city`,
+      method: "PUT",
+      data: newCity,
+      success: function(res) {
+        console.log(res);
+      }
+    });
+    this.cityData.splice(index, 1, newCity);
+  }
 }

@@ -17,16 +17,25 @@ $('#search').on('click','svg',function(){
 })
 
 $('#container').on('click','.delete-btn',async function (){
-    const cityName = $(this).closest('.city').data().name
-    const indexToChange = model.cityData.findIndex(c => c.name == cityName)
-    await model.removeCity(cityName , indexToChange)
+    const cityInfo = findNameAndIndex($(this))
+    await model.removeCity(cityInfo.cityName , cityInfo.cityIndex)
     renderer.renderData(model.cityData)
 })
 
 $('#container').on('click','.save-btn',async function(){
-    const cityName = $(this).closest('.city').data().name
-    const indexToSave = model.cityData.findIndex(c => c.name == cityName)
-    await model.saveCity(model.cityData[indexToSave],indexToSave)
+    const cityInfo = findNameAndIndex($(this))
+    await model.saveCity(model.cityData[cityInfo.cityIndex],cityInfo.cityIndex)
     renderer.renderData(model.cityData)
 })
+$('#container').on('click','.refresh',async function(){
+    const cityInfo = findNameAndIndex($(this))
+    await model.updateCity(cityInfo.cityName,cityInfo.cityIndex)
+    renderer.renderData(model.cityData)
+})
+
+const findNameAndIndex = function(obj){
+    const cityName = obj.closest('.city').data().name
+    const cityIndex = model.cityData.findIndex(c => c.name == cityName)
+    return {cityName,cityIndex}   
+}
 loadPage()

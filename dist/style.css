@@ -9,23 +9,25 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
-  
 }
-@media (min-width:630px){
-  #container{
-    width: 60vw;
+@media (min-width: 630px) {
+  #container {
     justify-self: center;
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    
   }
-  #search{
-    justify-content: center;
-    width: 60vw;
+  #search {
+    justify-self: center;
+    display: flex;
+    width: inherit;
+    margin: 5px;
+    padding-left: 5px;
+    color: #2c3a47;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
 }
-
 
 .city {
   display: grid;
@@ -42,6 +44,7 @@ body {
   padding: 5px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 
 .delete-btn {
   color: red;
@@ -76,15 +79,13 @@ body {
   font-weight: bold;
 }
 input {
+  flex: 1;
   border-radius: 25px;
   padding-left: 5px;
   height: 30px;
-  width: 40vw;
-  justify-self: center;
 }
 .search-icon {
   align-self: center;
-  justify-self: flex-end;
   cursor: pointer;
   margin-left: 5px;
 }
