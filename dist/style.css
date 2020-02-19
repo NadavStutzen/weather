@@ -17,7 +17,7 @@ body {
 .city {
   display: grid;
   color: white;
-  margin: 5px;
+  margin-top: 5px;
   background-color: rgba(50, 50, 0, 0.2);
   border-radius: 25px;
   border: black;
@@ -38,6 +38,12 @@ body {
 .delete-btn {
   color: red;
   padding-top: 5px;
+  font-size: xx-large;
+}
+.save-btn {
+  color: green;
+  padding-top: 5px;
+  font-size: xx-large;
 }
 #temp-save-cont {
   display: grid;
@@ -45,11 +51,6 @@ body {
 }
 #icon-desc-cont {
   display: grid;
-  grid-template-rows: 2fr 1fr;
-}
-.save-btn {
-  color: green;
-  padding-top: 5px;
 }
 .description {
   display: grid;
@@ -61,22 +62,26 @@ body {
   display: flex;
   width: 70vw;
   margin: 0 70px;
-  color: #dfdcb8;
+  border-radius: 25px;
+  background-color: #dfdcb8;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  
 }
 input {
   flex: 1;
-  border-radius: 25px;
-  padding-left: 5px;
+  padding-left: 10px;
   height: 30px;
   outline: none;
   background-color: #dfdcb8;
+  border: #dfdcb8;
+  border-radius: 25px;
+  
 }
 .search-icon {
   align-self: center;
   cursor: pointer;
-  margin-left: 3px;
+  padding-right: 10px;
 }
 
 @media (min-width: 630px) {
@@ -94,5 +99,14 @@ input {
     color: #2c3a47;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+  }
+  .city {
+    display: grid;
+    color: white;
+    margin-top: 5px;
+    background-color: rgba(50, 50, 0, 0.2);
+    border-radius: 25px;
+    border: black;
+    justify-items: start;
   }
 }

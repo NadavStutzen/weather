@@ -16,7 +16,8 @@ class Model {
     if (newCity == "error") {
       alert("Your serach returned no results,Try again");
       return;
-    } else if (!this.cityData.some(c => c.name == newCity.name)) {
+    }
+    if (!this.cityData.some(c => c.name == newCity.name)) {
       this.cityData.unshift(newCity);
       this.cityData[0].saved = false;
     } else {
@@ -30,34 +31,36 @@ class Model {
     console.log(savePromise);
   }
 
-  async removeCity(cityName, index) {
-    $.ajax({
+   async removeCity(cityName, index) {
+    await $.ajax({
       url: `./city/${cityName}`,
       method: "DELETE",
-      success: function(data) {
+      success: (data) => {
         console.log(`Succesfully removed `);
+        this.cityData.splice(index, 1);
       },
       error: function(err) {
         console.log(err);
       }
     });
-    this.cityData.splice(index, 1);
   }
   async updateCity(cityName, index) {
     const newCity = await $.get(`./city/${cityName}`);
-    if (this.cityData[index].saved) {
-      newCity.saved = true;
-    } else {
-      newCity.saved = false;
+    this.cityData[index].saved
+      ? (newCity.saved = true)
+      : (newCity.saved = false);
+    if(newCity.saved){
+      await $.ajax({
+        url: `./city`,
+        method: "PUT",
+        data: newCity,
+        success: (res) => {
+          console.log(res);
+          this.cityData.splice(index, 1, newCity);
+        }
+    })
+    }else{
+      this.cityData.splice(index, 1, newCity)
     }
-    await $.ajax({
-      url: `./city`,
-      method: "PUT",
-      data: newCity,
-      success: function(res) {
-        console.log(res);
-      }
-    });
-    this.cityData.splice(index, 1, newCity);
   }
 }
