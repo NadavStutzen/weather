@@ -4,12 +4,18 @@ const request = require("request");
 const City = require(`../models/City`);
 
 const apiKey = `e1c1e3622a802b737a0b62a19ddced05`;
-const getWeatherUrl = function(cityName) {
-  return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+const getWeatherUrl = function(query) {
+  if (query.cityName) {
+    const { cityName } = query;
+    return `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
+  } else {
+    const { lat, lon } = query;
+    return `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  }
 };
-router.get("/city/:cityName", function(req, res) {
-  const { cityName } = req.params;
-  request(getWeatherUrl(cityName), function(error, response) {
+
+router.get("/city", function(req, res) {
+  request(getWeatherUrl(req.query), function(error, response) {
     if (response.statusCode == 200) {
       const data = JSON.parse(response.body);
       const releventData = {
