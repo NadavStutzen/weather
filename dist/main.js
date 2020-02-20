@@ -18,6 +18,17 @@ $("#search").on("click", "svg", function() {
   $("input").val("");
 });
 
+$('input').keypress(event =>{
+ const keyCode = event.keyCode? event.keyCode:event.which
+ if(keyCode == '13'){
+  handleSearch($("input").val());
+  $("input").val("");
+ }
+})
+  
+
+
+
 $("#container").on("click", ".delete-btn", async function() {
   const cityInfo = findNameAndIndex($(this));
   await model.removeCity(cityInfo.cityName, cityInfo.cityIndex);
