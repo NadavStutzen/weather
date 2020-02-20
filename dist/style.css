@@ -1,26 +1,31 @@
 body {
   display: grid;
   grid-template-rows: 1fr auto;
-  background-size: cover;
-  background-image: url("https://images.pexels.com/photos/1212600/pexels-photo-1212600.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-size: 100%;
+  background-position: center center;
+  background: url("https://images.pexels.com/photos/1212600/pexels-photo-1212600.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #container {
-  width: 80vw;
+  width: calc(100vw - 120px);
+  margin: 0 60px;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   justify-self: center;
 }
-#currCityContainer{
-  width: 80vw;
+#currCityContainer {
+  width: calc(100vw - 120px);
+  margin: 0 60px;
   display: flex;
   flex-direction: column;
   margin-top: 40px;
   justify-self: center;
 }
 
-.currCity{
+.currCity {
   display: grid;
   color: white;
   margin-top: 5px;
@@ -30,20 +35,19 @@ body {
   grid-template-columns: 2fr 3fr 1fr;
   justify-items: start;
 }
-.location{
+.location {
   padding-left: 50px;
   font-size: 50px;
   justify-self: center;
 }
-    @keyframes appear {
-      from{
-        opacity: 0.1;
-      }
-      to{
-        opacity: 1;
-      }
-    }
-
+@keyframes appear {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .city {
   display: grid;
@@ -57,9 +61,8 @@ body {
   animation-name: appear;
   animation-duration: 1s;
   transition: background-color 2s;
-  
 }
-.city:hover{
+.city:hover {
   background-color: rgba(50, 50, 0, 0.5);
 }
 .name {
@@ -68,7 +71,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.refresh{
+.refresh {
   padding-left: 5px;
   color: #9bf056;
 }
@@ -98,13 +101,12 @@ body {
 #search {
   position: fixed;
   display: flex;
-  width: 70vw;
-  margin: 0 70px;
+  width: calc(100vw - 120px);
+  margin: 0 60px;
   border-radius: 25px;
   background-color: #dfdcb8;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  
 }
 input {
   flex: 1;
@@ -114,7 +116,6 @@ input {
   background-color: #dfdcb8;
   border: #dfdcb8;
   border-radius: 25px;
-  
 }
 .search-icon {
   align-self: center;
@@ -128,12 +129,15 @@ input {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+    width: calc(100vw - 120px);
+    margin: 0 60px;
   }
   #search {
     position: fixed;
     align-self: center;
     display: flex;
-    margin: 0 10vw;
+    width: calc(100vw - 120px);
+    margin: 0 60px;
     color: #2c3a47;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
