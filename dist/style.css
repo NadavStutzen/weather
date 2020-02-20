@@ -3,41 +3,41 @@ body {
   grid-template-rows: 1fr auto;
   background-size: 100%;
   background-position: center center;
-  background: url("https://images.pexels.com/photos/1212600/pexels-photo-1212600.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background: url("https://images.pexels.com/photos/957040/night-photograph-starry-sky-night-sky-star-957040.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: 'Lato', sans-serif;
 }
 
 #container {
-  width: calc(100vw - 50px);
-  margin: 0 25px;
+  width: 80vw;
+  justify-self: center;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  justify-self: center;
+  
+  
+  
 }
 #currCityContainer {
-  width: calc(100vw - 50px);
-  margin: 0 25px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 35px;
+  width: 84vw;
   justify-self: center;
+  margin-top: 35px;
 }
 
 .currCity {
   display: grid;
   color: white;
   margin-top: 5px;
-  background-color: rgba(154, 163, 153, 0.4);
+  background-color: rgba(108, 124, 106, 0.3);
   border-radius: 10px;
   border: black;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr 2fr;
   justify-items: center;
+  
 }
 .location {
-  padding-left: 25px;
-  font-size: 50px;
+  font-size: 40px;
   justify-self: center;
 }
 @keyframes appear {
@@ -53,10 +53,10 @@ body {
   display: grid;
   color: white;
   margin-top: 5px;
-  background-color: rgba(50, 50, 0, 0.2);
-  border-radius: 10px;
+  background-color: rgba(207, 142, 193, 0.3);
+  border-radius: 4px;
   border: black;
-  grid-template-columns: 2fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr 2fr;
   justify-items: center;
   animation-name: appear;
   animation-duration: 1s;
@@ -67,46 +67,35 @@ body {
   background-color: rgba(50, 50, 0, 0.5);
 }
 .name {
-  display: flex;
-  padding-left: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .refresh {
-  
-  justify-self: start;
   color: #9bf056;
 }
 
 .delete-btn {
   color: red;
-  padding-top: 5px;
-  font-size: xx-large;
+  font-size: large;
 }
 .save-btn {
   color: green;
-  padding-top: 5px;
-  font-size: xx-large;
+  font-size:large;
 }
-#temp-save-cont {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-}
-#icon-desc-cont {
-  display: grid;
-}
+
+
 .description {
-  display: grid;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 #search {
   position: fixed;
   display: flex;
-  width: calc(100vw - 130px);
-  margin: 0 65px;
+  width: calc(100vw - 60px);
+  margin: 0 30px;
+  justify-content: center;
   border-radius: 25px;
-  background-color: #dfdcb8;
+  background-color: rgba(12, 4, 4, 0.95);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -115,52 +104,16 @@ input {
   padding-left: 10px;
   height: 30px;
   outline: none;
-  background-color: #dfdcb8;
-  border: #dfdcb8;
+  background-color: rgba(12, 4, 4, 0.95);
+  border: rgba(12, 4, 4, 0.95);
   border-radius: 25px;
+  color: #ebdfec98;
+  font-family: 'Lato', sans-serif;
 }
 .search-icon {
   align-self: center;
-  cursor: pointer;
+  cursor: pointer; 
+  color: #ebdfec98;
   padding-right: 10px;
 }
 
-@media (min-width: 630px) {
-  #container {
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    width: calc(100vw - 120px);
-    margin: 0 60px;
-  }
-
-  #currCityContainer {
-    width: calc(100vw - 120px);
-    margin: 0 60px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 35px;
-    justify-self: center;
-  }
-  #search {
-    position: fixed;
-    align-self: center;
-    display: flex;
-    width: calc(100vw - 120px);
-    margin: 0 60px;
-    color: #2c3a47;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-  }
-  .city {
-    display: grid;
-    color: white;
-    margin-top: 5px;
-    background-color: rgba(50, 50, 0, 0.2);
-    border-radius: 10px;
-    border: black;
-    justify-items: center;
-  }
-  
-}
